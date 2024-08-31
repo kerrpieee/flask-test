@@ -35,7 +35,7 @@
             border: 1px black solid;
             padding: 6px 0px;
             display: block;
-            margin: 0 auto;
+            margin: 6px auto;
         }
     </style>
 </head>
@@ -48,6 +48,7 @@
     <h2 class="bookname">{{books[key]["name"]}}</h2>
     <div class="price">NT:{{books[key].price}}</div>
     <img class=bookimg src="{{books[key].image_url}}" alt="">
+    <button>購買</button>
     <hr>
 
     {% endfor %}

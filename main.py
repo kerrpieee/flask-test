@@ -21,6 +21,11 @@ books = {
         "price": 499,
         "image_url": "https://im1.book.com.tw/image/getImage?i=https://www.books.com.tw/img/001/036/04/0010360466.jpg&v=62d695bak&w=348&h=348",
     },
+    4: {
+        "name": "水豚",
+        "price": 899,
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3yr7DdhJ5e8WymXhtf1r4dbOHzJnRcaImqw&s",
+    },
 }
 
 
@@ -69,4 +74,4 @@ def index():
     return render_template("index.html", date=today, name=name)
 
 
-app.run()
+app.run(debug=True)

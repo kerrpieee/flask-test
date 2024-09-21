@@ -7,20 +7,36 @@
     <title>PM25-Chart</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+
+    <style>
+        .higher {
+            background-color: brown;
+            width: 200px;
+            text-align: center;
+            color: azure;
+            font-size: 24px;
+        }
+    </style>
+
 </head>
 
 <body>
     <a href="/">回首頁</a>
 
-    <div id="highestSite">最高:</div>
-    <div id="highestPm25">最高數值:</div>
-    <div id="lowestSite">最低:</div>
-    <div id="lowestPm25">最低數值:</div>
+    <div class="higher">最高:<span id="highestSite"></span>
+        <span id="highestPm25"></span>
+    </div>
+
+    <div class="lower">最低:<span id="lowestSite"></span>
+        <span id="lowestPm25"></span>
+    </div>
 
 
     <h1>PM2.5圖形繪製</h1>
     <div id="main" style="width: 1024px;height:400px;"></div>
     <script>
+        const chart1 = echarts.init(document.getElementById('main'));
+        const chart2 = echarts.init(document.getElementById('six'));
 
         $.ajax(
             {
@@ -30,6 +46,14 @@
                 success: (data) => {
                     console.log(data);
                     drawChart(chart1, data["site"], data["pm25"], title = "全省pm2.5數據", "pm2.5");
+
+                    $("#highestSite").text(data["highest"][0]);
+                    $("#highestPm25").text(data["highest"][1]);
+                    $("#lowestSite").text(data["lowest"][0]);
+                    $("#lowestPm25").text(data["lowest"][1]);
+
+
+
                 }
             }
         );
